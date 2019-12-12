@@ -1,11 +1,17 @@
 const express = require('express');
-
+const logger = require('morgan');
 
 // invoking express will return a express "app" object
 const app = express();
 
 const PORT = 3000;
 const DOMAIN = 'localhost';
+
+app.set('view engine', 'ejs'); // telling express to use ejs as the view engine
+// Initialize morgan 
+app.use(logger('dev'));
+
+
 
 
 // recieves at least 2 arguments:
@@ -16,7 +22,18 @@ const DOMAIN = 'localhost';
 
 // Route to handle GET "/hello_world"
 app.get("/hello_world", (request, response) => {
-  response.send("Hello World!");
+  response.render("hello_world");
+});
+
+
+// Make a route to handle GET "/survey"
+app.get("/survey", (req, res) => {
+  res.render("survey");
+});
+
+// Route to handle GET "/"
+app.get("/", (request, response) => {
+  response.send("welcome!");
 });
 
 
