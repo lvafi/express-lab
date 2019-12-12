@@ -8,6 +8,7 @@ const PORT = 3000;
 const DOMAIN = 'localhost';
 
 app.set('view engine', 'ejs'); // telling express to use ejs as the view engine
+
 // Initialize morgan 
 app.use(logger('dev'));
 
